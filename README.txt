@@ -4,7 +4,7 @@
 
 1. Clonar el repositorio:
    ```bash
-   git clone <URL_del_repositorio>
+   git clone https://github.com/EECG1986/todo_app.git
    cd todo_project
 
 2. Crear un entorno virtual y activarlo:
