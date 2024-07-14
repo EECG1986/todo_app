@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% block title %}Inicio{% endblock %} {% block content %}
+<style>
+    .jumbotron {
+        background-color: #e9ecef;
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+        border-radius: .3rem;
+    }
+    
+    .jumbotron .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .jumbotron .lead {
+        font-size: 1.25rem;
+    }
+    
+    .jumbotron hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
+<div class="container mt-4">
+    <div class="jumbotron text-center">
+        <h1 class="display-4">Bienvenido a la Aplicación To Do</h1>
+        <p class="lead">Esta es una aplicación simple para gestionar tus tareas.</p>
+        {% if user.is_authenticated %}
+        <hr class="my-4">
+        <p>¡Hola, {{ user.username }}!</p>
+        <a class="btn btn-primary btn-lg" href="{% url 'task_list' %}" role="button">Ver mis tareas</a> {% else %}
+        <hr class="my-4">
+        <p>Por favor, <a href="{% url 'login' %}">inicia sesión</a> o <a href="{% url 'signup' %}">regístrate</a> para comenzar.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

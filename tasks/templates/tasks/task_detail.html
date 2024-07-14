@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% block title %}Detalle de Tarea{% endblock %} {% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    <p>Estado: {% if task.status == 'pending' %}Pendiente{% else %}Completada{% endif %}</p>
+    <div class="mb-4">
+        <a class="btn btn-primary" href="{% url 'task_update' task.id %}">Editar</a>
+        <form method="post" action="{% url 'task_delete' task.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+        </form>
+        <a class="btn btn-secondary" href="{% url 'task_list' %}">Volver a la lista de tareas</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Tareas{% endblock %}
+
+{% block content %}
+    <h1>Lista de Tareas</h1>
+    <a class="btn btn-primary" href="{% url 'task_create' %}">Crear Nueva Tarea</a>
+    <ul class="list-group mt-3">
+        {% for task in tasks %}
+            <li class="list-group-item">
+                <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
+                {% if task.status == 'pending' %}
+                    <span class="badge badge-warning">Pendiente</span>
+                {% else %}
+                    <span class="badge badge-success">Completada</span>
+                {% endif %}
+            </li>
+        {% empty %}
+            <li class="list-group-item">No hay tareas.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

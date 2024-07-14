@@ -1,0 +1,56 @@
+{% extends 'base.html' %} {% block title %}Task Menu{% endblock %} {% block content %}
+<style>
+    .jumbotron {
+        background-color: #e9ecef;
+        padding: 2rem 1rem;
+        margin-bottom: 2rem;
+        border-radius: .3rem;
+    }
+    
+    .jumbotron .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .jumbotron .lead {
+        font-size: 1.25rem;
+    }
+    
+    .jumbotron hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #004085;
+    }
+</style>
+<div class="container mt-4">
+    <div class="jumbotron">
+        <h1 class="display-4">Bienvenido, {{ user.username }}!</h1>
+        <p class="lead">Manage your tasks efficiently.</p>
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h2>Your Tasks</h2>
+        </div>
+        <ul class="list-group list-group-flush">
+            {% for task in tasks %}
+            <li class="list-group-item">{{ task.name }}</li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'create_task' %}" class="btn btn-primary">Crear Nueva Tarea</a>
+
+    </div>
+</div>
+{% endblock %}
